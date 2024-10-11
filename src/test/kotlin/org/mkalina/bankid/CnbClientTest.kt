@@ -23,7 +23,7 @@ class CnbClientTest(
     @Test
     fun `load rates`() = runBlocking {
         mockResponse()
-        assertThat(cnbClient.load().get("AUD")).isEqualTo("15.557".toBigDecimal())
+        assertThat(cnbClient.getCzkRates().get("AUD")).isEqualTo("15.557".toBigDecimal())
         Unit
     }
 

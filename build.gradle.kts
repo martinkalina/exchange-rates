@@ -29,6 +29,8 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	implementation("org.wiremock.integrations:wiremock-spring-boot:3.0.1")
+	testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
