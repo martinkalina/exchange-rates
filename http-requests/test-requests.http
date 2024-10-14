@@ -1,0 +1,13 @@
+###
+GET http://localhost:8080/currencies
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+POST http://localhost:8080/rateDifference
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "from": "USD",
+  "to": "CZK"
+}

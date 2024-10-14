@@ -29,12 +29,14 @@ dependencies {
 	implementation("ch.qos.logback:logback-classic:1.5.9")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("io.netty:netty-resolver-dns-native-macos:4.1.113.Final:osx-aarch_64")
+	implementation("org.springframework.boot:spring-boot-starter-security")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	implementation("org.wiremock.integrations:wiremock-spring-boot:3.0.1")
 	testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+	testImplementation("org.springframework.security:spring-security-test")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

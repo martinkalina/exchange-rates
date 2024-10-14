@@ -22,7 +22,10 @@ class RatesControllerTest {
         whenever(ratesService.getSupportedCurrencies()).thenReturn(setOf(USD, EUR))
         webTestClient
             .get()
-            .uri("/currencies").accept(MediaType.APPLICATION_JSON).exchange()
+            .uri("/currencies")
+            .header("Authorization", "Basic dXNlcjpwYXNzd29yZA==")
+            .accept(MediaType.APPLICATION_JSON).exchange()
+            .expectStatus().isOk
             .expectBody()
             .jsonPath("$.supportedCurrencies[0]").isEqualTo(USD)
             .jsonPath("$.supportedCurrencies[1]").isEqualTo(EUR)
@@ -35,7 +38,10 @@ class RatesControllerTest {
         webTestClient
             .post()
             .uri("/rateDifference")
-            .bodyValue(RateDifferenceRequest(USD, EUR)).accept(MediaType.APPLICATION_JSON).exchange()
+            .bodyValue(RateDifferenceRequest(USD, EUR))
+            .header("Authorization", "Basic dXNlcjpwYXNzd29yZA==")
+            .accept(MediaType.APPLICATION_JSON).exchange()
+            .expectStatus().isOk
             .expectBody()
             .jsonPath("$").isEqualTo("-0.01")
         Unit
