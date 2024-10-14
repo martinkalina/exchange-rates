@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
+const val EUR = "EUR"
+const val USD = "USD"
+
 class RatesServiceTest {
 
     private val cnbClient = mock<CnbClient>()
@@ -18,13 +21,13 @@ class RatesServiceTest {
 
     @Test
     fun `get supported currencies`() = runBlocking {
-        assertThat(ratesService.getSupportedCurrencies()).containsExactly("EUR", "USD")
+        assertThat(ratesService.getSupportedCurrencies()).containsExactly(EUR, USD)
         Unit
     }
 
     @Test
     fun `get rates`() = runBlocking {
-        assertThat( ratesService.getCnbToCurrencyListRatio("USD", "EUR")).isEqualByComparingTo(1.toBigDecimal())
+        assertThat(ratesService.getCnbToCurrencyListDifference(USD, EUR)).isEqualByComparingTo((-0.01).toBigDecimal())
         Unit
     }
 
@@ -32,14 +35,14 @@ class RatesServiceTest {
     fun setup() = runBlocking {
         whenever(cnbClient.getCzkRates()).thenReturn(
             mapOf(
-                "EUR" to 25.00.toBigDecimal(),
-                "USD" to 20.00.toBigDecimal(),
+                EUR to 25.00.toBigDecimal(),
+                USD to 20.00.toBigDecimal(),
                 "PLN" to 5.8.toBigDecimal()
             )
         )
         whenever(currencyListClient.getEurRates()).thenReturn(
             mapOf(
-                "USD" to 0.80.toBigDecimal(),
+                USD to 0.81.toBigDecimal(),
                 "LINK" to 0.10328152.toBigDecimal(),
             )
         )
