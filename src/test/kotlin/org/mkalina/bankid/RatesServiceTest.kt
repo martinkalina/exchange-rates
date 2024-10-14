@@ -27,7 +27,7 @@ class RatesServiceTest {
 
     @Test
     fun `get rates`() = runBlocking {
-        assertThat(ratesService.getCnbToCurrencyListDifference(USD, EUR)).isEqualByComparingTo((-0.01).toBigDecimal())
+        assertThat(ratesService.getCnbToCurrencyListDifference(USD, EUR)).isEqualByComparingTo((-0.03333333).toBigDecimal())
         Unit
     }
 
@@ -42,7 +42,7 @@ class RatesServiceTest {
         )
         whenever(currencyListClient.getEurRates()).thenReturn(
             mapOf(
-                USD to 0.81.toBigDecimal(),
+                USD to 1.2.toBigDecimal(),
                 "LINK" to 0.10328152.toBigDecimal(),
             )
         )

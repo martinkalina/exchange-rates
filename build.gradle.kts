@@ -25,6 +25,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
+	implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
+	implementation("ch.qos.logback:logback-classic:1.5.9")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.netty:netty-resolver-dns-native-macos:4.1.113.Final:osx-aarch_64")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
