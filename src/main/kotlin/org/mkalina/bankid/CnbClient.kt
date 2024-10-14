@@ -22,7 +22,7 @@ class CnbClient(
         .baseUrl(apiUrl)
         .build()
 
-    suspend fun load(): Map<String, BigDecimal> {
+    suspend fun getCzkRates(): Map<String, BigDecimal> {
         val bytes = webClient.get()
             .accept(MediaType.APPLICATION_XML)
             .retrieve()

@@ -22,7 +22,7 @@ class CurrencyListClientTest(
     @Test
     fun `load rates`() = runBlocking {
         mockResponse()
-        assertThat(currencyListClient.load()["AUD"]).isEqualTo("1.62802767".toBigDecimal())
+        assertThat(currencyListClient.getEurRates()["AUD"]).isEqualTo("1.62802767".toBigDecimal())
         Unit
     }
 
