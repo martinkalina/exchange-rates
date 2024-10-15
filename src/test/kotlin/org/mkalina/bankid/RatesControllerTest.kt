@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.reactive.server.WebTestClient
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 class RatesControllerTest {
     @Autowired
     private lateinit var webTestClient: WebTestClient
@@ -43,7 +44,7 @@ class RatesControllerTest {
             .accept(MediaType.APPLICATION_JSON).exchange()
             .expectStatus().isOk
             .expectBody()
-            .jsonPath("$").isEqualTo("-0.01")
+            .jsonPath("$.cnbToCurrencyListDifference").isEqualTo("-0.01")
         Unit
     }
 

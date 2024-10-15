@@ -27,7 +27,12 @@ class RatesServiceTest {
 
     @Test
     fun `get rates`() = runBlocking {
-        assertThat(ratesService.getCnbToCurrencyListDifference(USD, EUR)).isEqualByComparingTo((-0.03333333).toBigDecimal())
+        assertThat(
+            ratesService.getCnbToCurrencyListDifference(
+                USD,
+                EUR
+            )
+        ).isEqualByComparingTo((-0.0333333333).toBigDecimal())
         Unit
     }
 

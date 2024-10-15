@@ -1,5 +1,6 @@
 package org.mkalina.bankid
 
+import java.math.BigDecimal
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,9 +17,10 @@ class RatesController(
     @PostMapping("rateDifference")
     suspend fun getRateDifference(
         @RequestBody rateDifferenceRequest: RateDifferenceRequest
-    ) = ratesService.getCnbToCurrencyListDifference(rateDifferenceRequest.from, rateDifferenceRequest.to)
+    ) = RatesDifferenceResponse(
+        ratesService.getCnbToCurrencyListDifference(rateDifferenceRequest.from, rateDifferenceRequest.to)
+    )
 }
-
 
 data class SupportedCurrenciesResponse(
     val supportedCurrencies: Set<String>
@@ -28,3 +30,5 @@ data class RateDifferenceRequest(
     val from: String,
     val to: String,
 )
+
+data class RatesDifferenceResponse(val cnbToCurrencyListDifference: BigDecimal)
